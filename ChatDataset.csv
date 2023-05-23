@@ -1,7 +1,7 @@
 Chat,Label
 "Hello, I have a question regarding my bill.",Billing
 My internet connection is very slow. Can you help me with that?,Network
-I received an incorrect invoice this month. What should I do?,Billing
+I received an incorrect invoice this month. What should I do now?,Billing
 I'm experiencing frequent network disconnections. It's affecting my work.,Network
 I'm having trouble making a payment online. Can you assist me?,Payment
 My bill seems to be higher than usual. Can you explain the charges?,Billing
@@ -228,3 +228,4 @@ sim not working,SIM Activation
 SIM not showing signal,SIM Card Activation
 i am unable to make or receive calls,Network
 i am not feeling well,Not Related to telecom
+top telcom compaies in world,jio

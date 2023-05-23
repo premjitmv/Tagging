@@ -22,15 +22,19 @@ model.fit(X, y)
 # Classify a new text input
 new_text = input("Enter a new text: ")
 X_new = vectorizer.transform([new_text])
-predicted_labels = model.predict(X_new)
+predicted_proba = model.predict_proba(X_new)[0]
 
-# Get the top three predicted labels
-top_labels = predicted_labels[0:3]
+# Get the top predicted labels and their corresponding probabilities
+top_labels = model.classes_[np.argsort(predicted_proba)][::-1][:5]
+top_probabilities = np.sort(predicted_proba)[::-1][:5]
 
-# Print the predicted labels
-print("Predicted Tag:")
-for label in top_labels:
-    print(label)
+# Create a list of predicted tags and their probabilities (in percentage)
+predicted_tags = [(label, round(probability * 100, 2)) for label, probability in zip(top_labels, top_probabilities)]
+
+# Print the predicted tags and their probabilities
+print("Predicted Tags:")
+for label, probability in predicted_tags:
+    print(label, "Probability:", probability, "%")
 
 # Ask for user feedback
 feedback = input("Is the predicted label correct? (yes/no): ")
@@ -54,3 +58,4 @@ if feedback.lower() == "no":
     updated_data = pd.DataFrame({'Chat': texts, 'Label': labels})
     updated_data.to_csv('ChatDataset.csv', index=False)
     print("Chat Dataset has been updated.")
+
